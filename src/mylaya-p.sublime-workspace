@@ -1,0 +1,389 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "// Place your settings in the file \"User/CTags.sublime-settings\", which\n// overrides the settings in here.\n{\n    // Enable debugging.\n    //\n    // When enabled, this will result in debug output being printed to the\n    // console. This can be useful for debugging issues.\n    \"debug\": false,\n\n    // Enable auto-complete.\n    //\n    // When enabled, this turns on a basic \"auto-complete\" feature, similar to\n    // a very rudimentary \"Intellisense(TM)\". This is useful for providing\n    // better suggestions than stock Sublime Text could provide.\n    \"autocomplete\": false,\n\n    // Path to ctags executable.\n    //\n    // Alter this value if your ctags command is not in the PATH, or if using\n    // a different version of ctags to that in the path (i.e. for OSX).\n    //\n    // NOTE: You *should not* place entire commands here. These commands are\n    // built automatically using the values below. For example, this is OK:\n    //\n    //     \"command\": \"/usr/bin/ctags\"\n    //\n    // This, on the other hand, won't work!\n    //\n    //     \"command\": \"ctags -R -f .tags --exclude=some/path\"\n    //\n    \"command\": \"\",\n\n    // Enable recursive searching of directories when building tag files.\n    //\n    // When enabled, this is equivalent to `-R` parameter. Set to true to\n    // enable recursive search of directories when generating tag files.\n    \"recursive\" : true,\n\n    // Default read/write location of the tags file.\n    //\n    // This is equivalent to the `-f [FILENAME]` parameter. There is likely no\n    // reason to change this unless you have a large number of existing tags\n    // files you'd like to use that already have a different name. In this\n    // case perhaps consider using the 'extra_tag_files' setting instead.\n    \"tag_file\" : \".tags\",\n\n    // Additional tag files names to search.\n    //\n    // These are searched in addition to the file name given in 'tag_file'\n    \"extra_tag_files\": [\".gemtags\", \"tags\"],\n\n    // Additional options to pass to ctags.\n    //\n    // Any addition options you may wish to pass to the ctags executable. For\n    // example:\n    //\n    //     [\"--exclude=some/path\", \"--exclude=some/other/path\", ...]\n    \"opts\" : [],\n\n    // Tag \"kind\"s to ignore.\n    //\n    // A ctags tagfile describes a number of different \"kind\"s, described in\n    // tag FORMAT file found here:\n    //\n    //     http://ctags.sourceforge.net/FORMAT\n    //\n    // These can be filtered (i.e. ignored). For example - 'import' statements\n    // should be ignored in Python. These are of kind \"i\", e.g.\n    //\n    //     \"type\":\"^i$\"\n    //\n    \"filters\": {\n        \"source.python\": {\"type\":\"^i$\"}\n    },\n\n    // Definition \"kind\"s to ignore.\n    //\n    // This is very similar to the 'filters' option. However, this only\n    // applies to the process that is used to find a definition. All filters\n    // placed here will be used when the plugin is searching for a definition\n    // in the file.\n    \"definition_filters\": {\n        \"source.php\": {\"type\":\"^v$\"}\n    },\n\n    // Enable the ctags menu in the context menus.\n    \"show_context_menus\": true,\n\n    // Paths to additional tag files to include in tag search.\n    //\n    // This is a list of items in the following format:\n    //\n    //     [[\"language\", \"platform\"], \"path\"]\n    //\n    \"extra_tag_paths\": [\n        [[\"source.python\", \"windows\"], \"C:\\\\Python27\\\\Lib\\\\tags\"]\n    ],\n\n    // Enable highlighting of selected symbol.\n    //\n    // When enabled, searched symbols will be highlighted when found. This\n    // can be irritating in some instances, e.g. when in Vintage mode. In\n    // these cases, setting this to false will disable this highlighting.\n    \"select_searched_symbol\": true,\n\n    // Set to false to not open an error dialog while tags are building\n    \"display_rebuilding_message\": true,\n\n    // Rank Manager language syntax regex and character sets\n    //\n    // Ex: Python 'and' ignore exp --> '\\sand\\s' - it must have whitespace\n    // around it so it is not part of real name: gates.Nand.evaluate()\n    \"language_syntax\": {\n        \"splitters\" : [\".\", \"::\", \"->\"],\n        \"source.js\": {\n            \"member_exp\": {\n                \"chars\": \"[A-Za-z0-9_$]\",\n                \"splitters\": [\"\\\\.\"],\n                \"open\": [\"\\\\{\", \"\\\\[\", \"\\\\(\"],\n                \"close\": [\"\\\\}\", \"\\\\]\" , \"\\\\)\"], //close[i] must match open[i]\n                \"ignore\": [\"&\", \"\\\\|\", \"\\\\?\", \":\", \"\\\\!\", \"'\", \"=\", \"\\\"\"],\n                \"stop\": [\"\\\\s\", \",\"],\n                \"this\": [\"this\", \"me\", \"self\", \"that\"]\n            },\n            \"reference_types\": {\n                \"__symbol__(\\\\.call|\\\\.apply){0,1}\\\\s*?\\\\(\": [\"f\", \"fa\"],\n                \"\\\\.fire\\\\s*?\\\\(\\\\s*?\\\\[\\\\'\\\"]__symbol__\\\\[\\\\'\\\"\\\\]\": [\n                    \"eventHandler\"\n                ]\n            }\n        },\n        \"source.python\": {\n            //python settings inherit JavaScript, with some overrides\n            \"inherit\": \"source.js\",\n            \"member_exp\": {\n                \"ignore\": [\"\\\\sand\\\\s\", \"\\\\sor\\\\s\", \"\\\\snot\\\\s\", \":\", \"\\\\!\",\n                           \"'\", \"=\", \"\\\"\"],\n                \"this\" : [\"self\"]\n            }\n        },\n        \"source.java\": {\n            \"inherit\": \"source.js\",\n            \"member_exp\": {\n                \"this\" : [\"this\"]\n            }\n        },\n        \"source.cs\": {\n            \"inherit\": \"source.js\",\n            \"member_exp\": {\n                \"this\" : [\"this\"]\n            }\n        }\n    },\n\n    // Scope Filters\n    //\n    // Tags file may optionally contain tagfield for the scope of the tag. For\n    // example:\n    //\n    //   item  .\\fileHelper.js   420;\"   vp  lineno:420  scope:420:19-422:9\n    //\n    // The re is used to extract 'scope:/beginLine:beginCol-endLine:endCol/'\n    //\n    // Different tags generators may generate this non-standard field in\n    // different formats\n    \"scope_re\": \"(\\\\d.*?):(\\\\d.*?)-(\\\\d.*?):(\\\\d.*?)\"\n}\n",
+			"file": "/C/soft/Sublime Text Build 3207 x64/Data/Packages/CTags/CTags.sublime-settings",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 5863,
+				"line_ending": "Windows",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "[\n    {\n        \"command\": \"navigate_to_definition\",\n        \"keys\": [\"ctrl+t\", \"ctrl+t\"]\n    },\n    {\n        \"command\": \"navigate_to_definition\",\n        \"keys\": [\"ctrl+shift+period\"]\n    },\n    {\n        \"command\": \"search_for_definition\",\n        \"keys\": [\"ctrl+t\", \"ctrl+y\"]\n    },\n    {\n        \"command\": \"jump_prev\",\n        \"keys\": [\"ctrl+t\", \"ctrl+b\"]\n    },\n    {\n        \"command\": \"jump_prev\",\n        \"keys\": [\"ctrl+shift+comma\"]\n    },\n    {\n        \"command\": \"rebuild_tags\",\n        \"keys\": [\"ctrl+t\", \"ctrl+r\"]\n    },\n    {\n        \"command\": \"show_symbols\",\n        \"context\": [\n            {\n                \"key\": \"selector\",\n                \"match_all\": true,\n                \"operand\": \"source -source.css\",\n                \"operator\": \"equal\"\n            }\n        ],\n        \"keys\": [\"alt+s\"]\n    },\n    {\n        \"command\": \"show_symbols\",\n        \"args\": {\"type\": \"multi\"},\n        \"context\": [\n            {\n                \"key\": \"selector\",\n                \"match_all\": true,\n                \"operand\": \"source -source.css\",\n                \"operator\": \"equal\"\n            }\n        ],\n        \"keys\": [\"alt+shift+s\"]\n    },\n    {\n        \"command\": \"show_symbols\",\n        \"args\": {\"type\": \"lang\"},\n        \"context\": [\n            {\n                \"key\": \"selector\",\n                \"match_all\": true,\n                \"operand\": \"source -source.css\",\n                \"operator\": \"equal\"\n            }\n        ],\n        \"keys\": [\"ctrl+alt+shift+s\"]\n    },\n    { // override current default\n        \"command\": \"transpose\",\n        \"context\": [\n            { \"key\": \"num_selections\", \"operator\": \"not_equal\", \"operand\": 1 }\n        ],\n        \"keys\": [\"ctrl+t\"]\n    }\n]\n",
+			"file": "/C/soft/Sublime Text Build 3207 x64/Data/Packages/CTags/Default.sublime-keymap",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 1701,
+				"line_ending": "Windows",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"contents": "[\n    {\n        \"button\": \"button1\",\n        \"count\": 1,\n        \"press_command\": \"drag_select\",\n        \"modifiers\": [\"ctrl\",\"shift\"],\n        \"command\": \"navigate_to_definition\"\n    },\n    {\n        \"button\": \"button2\",\n        \"count\": 1,\n        \"modifiers\": [\"ctrl\",\"shift\"],\n        \"command\": \"jump_prev\"\n    }\n]\n",
+			"file": "/C/soft/Sublime Text Build 3207 x64/Data/Packages/CTags/Default.sublime-mousemap",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 320,
+				"line_ending": "Windows",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "/C/soft/Sublime Text Build 3207 x64/Data/Packages/User/Default (Windows).sublime-mousemap",
+			"settings":
+			{
+				"buffer_size": 304,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Main.as",
+			"settings":
+			{
+				"buffer_size": 1622,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/layaboxProjects/mylaya/myLaya",
+		"/C/layaboxProjects/mylaya/myLaya/src"
+	],
+	"file_history":
+	[
+		"/C/layaboxProjects/mylaya/myLaya/libs/laya/src/laya/display/Scene.as",
+		"/C/layaboxProjects/mylaya/myLaya/libs/laya/src/laya/display/Stage.as",
+		"/C/layaboxProjects/mylaya/myLaya/.laya/temp.js",
+		"/C/soft/Sublime Text Build 3207 x64/Data/Packages/User/CTags.sublime-settings",
+		"/C/soft/Sublime Text Build 3207 x64/Data/Packages/User/Default (Windows).sublime-mousemap",
+		"/C/layaboxProjects/mylaya/myLaya/src/GameConfig.as",
+		"/C/layaboxProjects/mylaya/myLaya/src/Main.as"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/soft/Sublime Text Build 3207 x64/Data/Packages/CTags/CTags.sublime-settings",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5863,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								5863
+							]
+						],
+						"settings":
+						{
+							"mini_diff": false,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/soft/Sublime Text Build 3207 x64/Data/Packages/CTags/Default.sublime-keymap",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1701,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								1701
+							]
+						],
+						"settings":
+						{
+							"mini_diff": false,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/soft/Sublime Text Build 3207 x64/Data/Packages/CTags/Default.sublime-mousemap",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 320,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								320
+							]
+						],
+						"settings":
+						{
+							"mini_diff": false,
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/soft/Sublime Text Build 3207 x64/Data/Packages/User/Default (Windows).sublime-mousemap",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 304,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								262,
+								262
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Main.as",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1622,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1548,
+								1548
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/ActionScript/ActionScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 396.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "mylaya-p.sublime-project",
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

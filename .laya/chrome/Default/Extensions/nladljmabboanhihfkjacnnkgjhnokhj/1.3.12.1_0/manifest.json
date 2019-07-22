@@ -1,0 +1,54 @@
+{
+   "author": "Lavasoft",
+   "background": {
+      "page": "background.html"
+   },
+   "browser_action": {
+      "default_icon": {
+         "19": "img/browsericons/icon19.png",
+         "38": "img/browsericons/icon38.png"
+      },
+      "default_popup": "load-new.html"
+   },
+   "chrome_settings_overrides": {
+      "search_provider": {
+         "encoding": "UTF-8",
+         "favicon_url": "http://in.adaware.com/chrome_extension/icon19.ico",
+         "is_default": true,
+         "keyword": "Adaware Secure",
+         "name": "Adaware Secure",
+         "search_url": "https://defaultsearch.co/?q={searchTerms}"
+      }
+   },
+   "chrome_url_overrides": {
+      "newtab": "new-tab.html"
+   },
+   "content_scripts": [ {
+      "all_frames": false,
+      "css": [ "/css/contentscript.css" ],
+      "js": [ "/js/contentscript.js" ],
+      "matches": [ "https://lavasoft.gosearchresults.com/*", "http://lavasoft.gosearchresults.com/*", "https://www.bing.com/search*", "https://www.yandex.ru/search/*", "https://www.google.com/search*" ],
+      "run_at": "document_start"
+   }, {
+      "all_frames": true,
+      "js": [ "/js/sub_contentscript.js" ],
+      "matches": [ "https://partnerads.ysm.yahoo.com/*" ],
+      "run_at": "document_end"
+   } ],
+   "default_locale": "en",
+   "description": "__MSG_extShortDesc__",
+   "icons": {
+      "128": "img/icon_128.png",
+      "16": "img/icon_16.png"
+   },
+   "incognito": "split",
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArm8tIVtVKksvAyCQbNzdUvWiPVrYMOqbk4W7cwIBkfywIbMzbq117HmSxRtrlP1YKA24DTQb48GU6UQ27So4zLfhJ8/J/+bxDjUVOgBLWTvTGxClMRWcDOSg8EfQMs0El0PmjC7cFFZWSDsk/ABAT7qdYc1FgDqB3WAb4XM5GyugU5JkIM7v8dGPQlT2wVsBYhWiMBxn6pSu7MqhzdPSjKj6JP/Or2uC0MYTCqcFH1Ihy/A77/gdjO4i22h/nFGjIhkfSrYIhChmAm7Qmx7U/D+lCaf/IeTlsCTXU2PTyN1Txb2kys+A/0kEYEVSN7B58zGr2QcI78pv9Rh0t+3CFQIDAQAB",
+   "manifest_version": 2,
+   "minimum_chrome_version": "26.0",
+   "name": "Adaware Secure Search",
+   "permissions": [ "cookies", "notifications", "storage", "tabs", "unlimitedStorage", "webNavigation", "http://*/*", "https://*/*" ],
+   "short_name": "Adaware Secure",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "1.3.12.1",
+   "web_accessible_resources": [ "img/*" ]
+}

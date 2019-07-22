@@ -1,0 +1,4 @@
+{
+	"scripts":["Main.max.js"],
+	"screenOrientation":"sensor_landscape"
+}

@@ -1,0 +1,49 @@
+#include "Colors.glsl";
+#include "Sampling.glsl";
+
+varying vec2 v_Texcoord0;
+
+uniform sampler2D u_MainTex;
+uniform sampler2D u_BloomTex;
+
+uniform sampler2D u_AutoExposureTex;
+uniform sampler2D u_Bloom_DirtTex;
+uniform vec4 u_BloomTex_TexelSize;
+uniform vec4 u_Bloom_DirtTileOffset; // xy: tiling, zw: offset
+uniform mediump vec3 u_Bloom_Settings;// x: sampleScale, y: intensity, z: dirt intensity
+uniform mediump vec3 u_Bloom_Color;
+
+void main() {
+	mediump float autoExposure = texture2D(u_AutoExposureTex, v_Texcoord0).r;
+	mediump vec4 color=vec4(0.0)
+	color = texture2D(u_MainTex, v_Texcoord0);
+	
+	color = SRGBToLinear(color);
+	color.rgb *= autoExposure;
+	
+	#if BLOOM || BLOOM_LOW
+	{
+		#if BLOOM
+			mediump vec4 bloom = UpsampleTent(_BloomTex, uvDistorted, _BloomTex_TexelSize.xy, _Bloom_Settings.x);
+		#else
+			mediump vec4 bloom = UpsampleBox(_BloomTex, uvDistorted, _BloomTex_TexelSize.xy, _Bloom_Settings.x);
+		#endif
+
+		// UVs should be Distort(uv * _Bloom_DirtTileOffset.xy + _Bloom_DirtTileOffset.zw)
+		// but considering we use a cover-style scale on the dirt texture the difference
+		// isn't massive so we chose to save a few ALUs here instead in case lens distortion
+		// is active
+		mediump vec4 dirt = mediump vec4(SAMPLE_TEXTURE2D(_Bloom_DirtTex, sampler_Bloom_DirtTex, uvDistorted * _Bloom_DirtTileOffset.xy + _Bloom_DirtTileOffset.zw).rgb, 0.0);
+
+		// Additive bloom (artist friendly)
+		bloom *= _Bloom_Settings.y;
+		dirt *= _Bloom_Settings.z;
+		color += bloom * half4(_Bloom_Color, 1.0);
+		color += dirt * bloom;
+	}
+	#endif
+	
+	half4 output = color;
+	output = LinearToSRGB(output);
+	//output.rgb = Dither(output.rgb, v_Texcoord0);//TODO:
+}

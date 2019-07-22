@@ -1,0 +1,92 @@
+{
+   "abstract": {
+      "message": "Abstract"
+   },
+   "animals": {
+      "message": "Animals"
+   },
+   "days": {
+      "list": [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ],
+      "message": "dayArray"
+   },
+   "english": {
+      "message": "English"
+   },
+   "extName": {
+      "description": "extension name.",
+      "message": "Secure Search"
+   },
+   "extShortDesc": {
+      "description": "this will be in the chrome web store: must be 132 characters or less",
+      "message": "Stay protected while searching and surfing the Web. Never worry about suspicious websites again."
+   },
+   "food": {
+      "message": "Food"
+   },
+   "footerAboutUs": {
+      "message": "About us"
+   },
+   "footerContactUs": {
+      "message": "Contact us"
+   },
+   "footerEula": {
+      "message": "EULA"
+   },
+   "footerMessage": {
+      "message": "Your search is secured with Adaware."
+   },
+   "footerPrivacy": {
+      "message": "Privacy Policy"
+   },
+   "french": {
+      "message": "French"
+   },
+   "german": {
+      "message": "German"
+   },
+   "languageMessage": {
+      "message": "Language"
+   },
+   "months": {
+      "list": [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
+      "message": "dayArray"
+   },
+   "nature": {
+      "message": "Nature"
+   },
+   "newTab": {
+      "description": "new tab label",
+      "message": "New Tab"
+   },
+   "onMessage": {
+      "message": "on"
+   },
+   "photoMessage": {
+      "message": "Photo By"
+   },
+   "privacy": {
+      "message": "Privacy policy"
+   },
+   "searchEngineMessage": {
+      "message": "Search Engine"
+   },
+   "searchPlaceholder": {
+      "description": "placeholder value",
+      "message": "Search the web"
+   },
+   "settings": {
+      "message": "Settings"
+   },
+   "spanish": {
+      "message": "Spanish"
+   },
+   "themeMessage": {
+      "message": "Select a Theme"
+   },
+   "urban": {
+      "message": "Urban"
+   },
+   "useTerm": {
+      "message": "Terms of use"
+   }
+}

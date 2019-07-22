@@ -1,0 +1,92 @@
+{
+   "abstract": {
+      "message": "Abstrakt"
+   },
+   "animals": {
+      "message": "Tiere"
+   },
+   "days": {
+      "list": [ "Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag" ],
+      "message": "dayArray"
+   },
+   "english": {
+      "message": "Englisch"
+   },
+   "extName": {
+      "description": "extension name.",
+      "message": "Secure Search"
+   },
+   "extShortDesc": {
+      "description": "this will be in the chrome web store: must be 132 characters or less",
+      "message": "Bleiben Sie bei der Suche und dem Surfen im Internet geschützt Machen Sie sich nie wieder Sorgen über verdächtige Websites."
+   },
+   "food": {
+      "message": "Essen"
+   },
+   "footerAboutUs": {
+      "message": "Über uns"
+   },
+   "footerContactUs": {
+      "message": "Kontaktieren Sie uns"
+   },
+   "footerEula": {
+      "message": "EULA"
+   },
+   "footerMessage": {
+      "message": "Ihre Suche ist mit Adaware sicher."
+   },
+   "footerPrivacy": {
+      "message": "Datenschutzrichtlinie"
+   },
+   "french": {
+      "message": "Französisch"
+   },
+   "german": {
+      "message": "Deutsch"
+   },
+   "languageMessage": {
+      "message": "Sprache"
+   },
+   "months": {
+      "list": [ "Januar", "Februar", "Marz", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember" ],
+      "message": "monthArray"
+   },
+   "nature": {
+      "message": "Natur"
+   },
+   "newTab": {
+      "description": "new tab label",
+      "message": "Neuer Tab"
+   },
+   "onMessage": {
+      "message": "auf"
+   },
+   "photoMessage": {
+      "message": "Foto von"
+   },
+   "privacy": {
+      "message": "Datenschutz-Bestimmungen"
+   },
+   "searchEngineMessage": {
+      "message": "Suchmaschine"
+   },
+   "searchPlaceholder": {
+      "description": "placeholder value",
+      "message": "Im Internet suchen"
+   },
+   "settings": {
+      "message": "Einstellungen"
+   },
+   "spanish": {
+      "message": "Spanisch"
+   },
+   "themeMessage": {
+      "message": "Ein Thema wählen"
+   },
+   "urban": {
+      "message": "Urban"
+   },
+   "useTerm": {
+      "message": "Nutzungsbedingungen"
+   }
+}

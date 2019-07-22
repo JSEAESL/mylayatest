@@ -1,0 +1,5 @@
+<page>
+   <item name="test/TestScene.scene" props="" ifExport="分离模式" aName=""/>
+   <item name="quest/QusetScene.scene" props="" ifExport="分离模式" aName=""/>
+   <item name="demo/DemoScene.scene" props="" ifExport="分离模式" aName=""/>
+</page>
